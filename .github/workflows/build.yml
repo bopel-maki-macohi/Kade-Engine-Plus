@@ -6,7 +6,7 @@ jobs:
   windowsBuild:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6.0.2
       - uses: krdlab/setup-haxe@v2.0.2
         with:
           haxe-version: 4.3.7
@@ -14,7 +14,7 @@ jobs:
         run: |
           ./librariesSetup.bat
           haxelib run lime build windows
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: Windows Build
           path: export/release/windows/bin
@@ -22,7 +22,7 @@ jobs:
   linuxBuild:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6.0.2
       - uses: krdlab/setup-haxe@v2.0.2
         with:
           haxe-version: 4.3.7
@@ -32,7 +32,7 @@ jobs:
           ./librariesSetup.bat
           haxelib run lime build linux
           
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: Linux Build
           path: export/release/linux/bin
@@ -40,7 +40,7 @@ jobs:
   webBuild:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6.0.2
       - uses: krdlab/setup-haxe@v2.0.2
         with:
           haxe-version: 4.3.7
@@ -48,7 +48,7 @@ jobs:
         run: |
           ./librariesSetup.bat
           haxelib run lime build html5
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: HTML5 Build
           path: export/release/html5/bin
