@@ -1,6 +1,6 @@
 haxelib newrepo
 
-haxelib install lime 7.9.0
+haxelib install lime
 haxelib install openfl
 haxelib install flixel
 haxelib run lime setup flixel
