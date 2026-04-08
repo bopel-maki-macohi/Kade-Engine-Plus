@@ -1,0 +1,54 @@
+name: Build CI
+
+on: [push, pull_request]
+
+jobs:
+  windowsBuild:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: krdlab/setup-haxe@v2.0.2
+        with:
+          haxe-version: 4.3.7
+      - name: script run line haha
+        run: |
+          ./librariesSetup.bat
+          haxelib run lime build windows
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Windows Build
+          path: export/release/windows/bin
+
+  linuxBuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: krdlab/setup-haxe@v2.0.2
+        with:
+          haxe-version: 4.3.7
+      - name: script run line haha
+        run: |
+          chmod +x librariesSetup.bat
+          ./librariesSetup.bat
+          haxelib run lime build linux
+          
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Linux Build
+          path: export/release/linux/bin
+          
+  webBuild:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: krdlab/setup-haxe@v2.0.2
+        with:
+          haxe-version: 4.3.7
+      - name: script run line haha
+        run: |
+          ./librariesSetup.bat
+          haxelib run lime build html5
+      - uses: actions/upload-artifact@v2
+        with:
+          name: HTML5 Build
+          path: export/release/html5/bin
